@@ -1,0 +1,32 @@
+/*
+a luck number is a number which has 4 or 7 in its decimal representation. eg 47,74,77,474... given a lucky number return its index
+sample input:
+74
+output:
+5
+
+as 4,7,44,47,74,77.......
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int
+
+using namespace std;
+
+int main()
+{
+    string n;
+    cin>>n;
+    ll digits=(1<<(n.size()))-2;
+    ll ans=0,c=0;
+    for(int i=n.size()-1; i>=0; i--){
+        if(n[i]=='7'){
+            ans=ans+(1<<c);
+        }
+        c++;
+    }
+    ll res=digits+ans;
+    cout<<res+1<<endl;
+
+    return 0;
+}
