@@ -1,0 +1,27 @@
+/*
+a question given find out the answer to x^n, this seems quite simple and easy if done explicitly or used a stl function. But what these
+functions do is calculate the power iteratively. This takes upto O(n) time. This can be cost ineffective in programs that constantly call the 
+pow() function. One way to reduce is to consider three cases, when n=0 , n is even and odd.
+ In case of even we can split up as (x^(n/2))*(x^(n/2)) , incase of odd as x*(x^(n/2))*(x^(n/2))
+ This makes the function O(lgn) i.e log base 2
+ */
+ 
+ #include <iostream>
+
+using namespace std;
+
+long long int power(long long int x, long long int n){
+    if(n==0) return 1;
+    long long int res = power(x,n/2);
+    if(n&1) return x*res*res;
+    else return res*res;
+}
+
+
+int main()
+{
+    int a=47;
+    cout<<power(a,5);
+
+    return 0;
+}
