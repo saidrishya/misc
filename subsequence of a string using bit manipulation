@@ -1,0 +1,20 @@
+/*
+given a string s, find all its substrings or subsequences*/
+
+#include <bits/stdc++.h>
+using namespace std;
+//subsequence of a string
+int main(){
+    string s="adc";
+    int n= (1 << s.size())-1;
+    for(int i=0; i<=n; i++){
+        int temp=i,j=0;
+        while(temp > 0){
+            if(temp&1)
+                cout<<s[j];
+            j++;
+            temp>>=1;
+        }
+        cout<<'\n';
+    }
+}
