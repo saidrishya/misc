@@ -1,0 +1,30 @@
+/*
+Given a sequence of integers, every number repeats thrice except one. Find that one
+Ex
+55 55 55 66 77 66 77 88 77 66
+Ans-88
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n; cin>>n;
+    int a[n]; for(int i=0; i<n; i++)cin>>a[i];
+    int mat[32]={0};
+    for(int i=0; i<n; i++){
+        int number=a[i],j=0;
+        while(number>0){
+            mat[j]+= (number&1);
+            j++;
+            number>>=1;
+        }
+    }
+    int ans=0, pos=1;
+    for(int i=0; i<32; i++){
+        mat[i]%=3;
+        ans+=mat[i]*pos;
+        pos<<=1;
+    }
+    cout<<ans;
+}
